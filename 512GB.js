@@ -8,10 +8,7 @@ export async function main(ns) {
 
   // Fortsetter å forsøke å kjøpe servere så lenge vi har råd og tilbud.
   ns.purchaseServer(ram + "GB", ram);
-  // TODO gjøre det mulig å scp scriptene til ny server
-  // TODO kjøre scriptet på server
-  // TOOO dynamisk, slik at det gjelder for flere nye.
-
+  
   var servers = ns.getPurchasedServers();
 
   var i = 0;
