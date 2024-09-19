@@ -19,21 +19,22 @@ export async function main(ns) {
     let i = 0;
     var contractes = [];
     while (i < srlist.length) {
-      let files = ns.getScriptLogs(srlist[i]);
+      let files = ns.ls(srlist[i]);
       if (files.length > 0) {
         for (let j = 0; j > files.length; j++) {
-          if (files[j].includes(".crt")) {
-            contractes.push(files[j]);
+          if (files[j].includes(".cct")) {
+            contractes.push(srlist[i]);
           }
         }
-
       }
+      i++;
     }
-
-    var contracts = findContracts(slrist);
-
-
-    ns.sprintf(contracts);
-    await ns.sleep(1000);
+    return contractes = contractes.length == 0 ? '¯\_(ツ)_/¯' : contractes;
   }
+
+
+  var contracts = findContracts(srlist);
+  ns.printf(contracts);
+  await ns.sleep(1000);
+
 }
