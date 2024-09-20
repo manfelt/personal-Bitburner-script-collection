@@ -1,6 +1,7 @@
 /** @param {NS} ns */
 export async function main(ns) {
 
+  // Lists servers that has contracts on them. Use wih '--tail'
 
   // Every server ever
   var srlist = ['run4theh111z', 'n00dles', 'foodnstuff', 'sigma-cosmetics',
@@ -19,9 +20,10 @@ export async function main(ns) {
     let i = 0;
     var contractes = [];
     while (i < srlist.length) {
-      let files = ns.ls(srlist[i]);
+      var files = ns.ls(srlist[i]);
+
       if (files.length > 0) {
-        for (let j = 0; j > files.length; j++) {
+        for (let j = 0; j < files.length; j++) {
           if (files[j].includes(".cct")) {
             contractes.push(srlist[i]);
           }
@@ -34,7 +36,13 @@ export async function main(ns) {
 
 
   var contracts = findContracts(srlist);
-  ns.printf(contracts);
+  let i = 0;
+  while (i < contracts.length) {
+    ns.printf(contracts[i]);
+    i++;
+    await ns.sleep(500);
+  }
+
   await ns.sleep(1000);
 
 }
