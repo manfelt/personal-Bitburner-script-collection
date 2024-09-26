@@ -14,42 +14,46 @@ int stocks[] = { 63,52,109,116,12,138,84,192,129,108,174,196,160,12,113,83,175,1
 
 int arr_length(int arr[])
 {
-    int i;
-    int count = 0;
-    for(i=0; arr[i]!='\0'; i++)
-    {
-        count++;
-    }
-    return count;
+	int i;
+	int count = 0;
+	for(i=0; arr[i]!='\0'; i++)
+	{
+		count++;
+	}
+	return count;
 }
 
 int algo1(int arr[]) 
 {
 	int i, n, high, low, margin;
 
-	low = margin = n = 0;
+	margin = n = 0;
 	high = 1;
+	low = arr[0];
 
 	int length = arr_length(arr); 
-	
-	for (i = 0; i < length; i++)
-		if (arr[i] < high)
+
+	for (i = 0; i < length; i++){
+		if (arr[i] > high)
 			high = arr[i];
-		if (arr[i] > low)
+		if (arr[i] < low)
 			low = arr[i];
 		n = high - low;
 		if (n > margin)
 			margin = n;
-		
-		
-		return margin;
-	
+	}
+	printf("high: %d\n", high);
+	printf("low: %d\n", low);
+
+
+	return margin;
+
 }
 
 int main() 
 {
-	
-	printf("results: %d", algo1(stocks));
+
+	printf("results: %d\n", algo1(stocks));
 
 	return 0;
 }
